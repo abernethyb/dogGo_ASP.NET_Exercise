@@ -156,7 +156,7 @@ namespace DogGo.Repositories
                     // OUTPUT INSERTED.ID
                     // VALUES(@name, @ownerId, @breed, @notes, @imageUrl);
                     cmd.CommandText = @"
-                            UPDATE Owner
+                            UPDATE Dog
                             SET 
                                 [Name] = @name, 
                                 OwnerId = @ownerId, 

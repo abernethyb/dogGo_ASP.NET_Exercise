@@ -4,6 +4,7 @@
     ViewData["Title"] = "Index";
 }
 
+
 <h1>Index</h1>
 
 <p>
@@ -52,7 +53,7 @@
                 @Html.DisplayFor(modelItem => item.Notes)
             </td>
             <td>
-                <img src="@item.ImageUrl" alt="Dog Profile Picture" />
+                <img src="@item.ImageUrl" alt="Dog Profile Picture" class="profile"/>
             </td>
             <td>
                 @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
