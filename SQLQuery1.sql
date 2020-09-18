@@ -1,2 +1,2 @@
-﻿SELECT * FROM Dog;
-SELECT Id, Name, OwnerId, Breed, Notes, ImageUrl FROM Dog;
+﻿SELECT * FROM Walks;
+SELECT Id, Date, Duration, WalkerId, DogId FROM Walks;
