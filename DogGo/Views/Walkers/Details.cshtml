@@ -7,6 +7,10 @@
     <section class="container">
         <img src="@Model.Walker.ImageUrl" alt="avatar" class="profile" />
         <div>
+            <label class="font-weight-bold">Name:</label>
+            <span>@Model.Walker.Name</span>
+        </div>
+        <div>
             <label class="font-weight-bold">Neighborhood:</label>
             <span>@Model.Neighborhood.Name</span>
         </div>
@@ -37,26 +41,38 @@
                 <tbody>
                     @foreach (Walk walk in Model.Walks)
                     {
-                        <tr>
-                            <td>
-                                @Html.DisplayFor(modelItem => @walk.Date)
-                            </td>
-                            <td>
-                                @foreach (Owner owner in Model.Owners)
-                                {
+                        @foreach (Owner owner in Model.Owners)
+                        {
+                            <tr>
+                                <td>
+                                    @Html.DisplayFor(modelItem => walk.Date)
+                                </td>
+                                <td>
+
+                                    @*<p>@owner.Name</p>*@
                                     @Html.DisplayFor(modelItem => owner.Name)
-                                }
-                            </td>
-                            <td>
-                                @(walk.Duration / 60) min
-                            </td>
-                        
-                        </tr>
+                                    
+                                </td>
+                                <td>
+                                    @(walk.Duration / 60) min
+                                </td>
+
+                            </tr>
+                        }
                     }
 
-                </tbody>
+                    </tbody>
 
             </table>
         </section>
+    </div>
+    <div>
+        @{ int totalWalkDuration = 0;
+            foreach (Walk walk in Model.Walks)
+            {
+                { totalWalkDuration += walk.Duration; }
+            };
+        }
+        <h2>Total Walk Time: @(totalWalkDuration/60)</h2>
     </div>
 </div>
