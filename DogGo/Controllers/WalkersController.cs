@@ -31,24 +31,25 @@ namespace DogGo.Controllers
 
             List<Dog> dogs = new List<Dog>();
 
-            foreach (Walk walk in walks)
-            {
-                Dog dog = _dogRepo.GetDogById(walk.DogId);
-                dogs.Add(dog);
-            }
-            List<Owner> owners = new List<Owner>();
+            //foreach (Walk walk in walks)
+            //{
+            //    Dog dog = _dogRepo.GetDogById(walk.DogId);
+            //    dogs.Add(dog);
+                
+            //}
+            //List<Owner> owners = new List<Owner>();
+            
 
-            foreach (Dog dog in dogs)
-            {
-                Owner owner = _ownerRepo.GetOwnerById(dog.OwnerId);
-                owners.Add(owner);
-            }
+            //foreach (Dog dog in dogs)
+            //{
+            //    Owner owner = _ownerRepo.GetOwnerById(dog.OwnerId);
+            //    owners.Add(owner);
+            //}
 
             WalkerProfileViewModel vm = new WalkerProfileViewModel()
             {
                 Walker = walker,
                 Walks = walks,
-                Owners = owners,
                 Neighborhood = neighborhood
             };
 

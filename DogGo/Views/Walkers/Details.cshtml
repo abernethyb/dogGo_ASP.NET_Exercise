@@ -41,8 +41,7 @@
                 <tbody>
                     @foreach (Walk walk in Model.Walks)
                     {
-                        @foreach (Owner owner in Model.Owners)
-                        {
+                       
                             <tr>
                                 <td>
                                     @Html.DisplayFor(modelItem => walk.Date)
@@ -50,7 +49,7 @@
                                 <td>
 
                                     @*<p>@owner.Name</p>*@
-                                    @Html.DisplayFor(modelItem => owner.Name)
+                                    @Html.DisplayFor(modelItem => walk.OwnerName)
                                     
                                 </td>
                                 <td>
@@ -59,7 +58,7 @@
 
                             </tr>
                         }
-                    }
+                    
 
                     </tbody>
 

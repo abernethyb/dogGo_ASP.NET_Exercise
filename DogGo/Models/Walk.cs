@@ -18,5 +18,7 @@ namespace DogGo.Models
 
         public int DogId { get; set; }
 
+        public string OwnerName { get; set; }
+
     }
 }
