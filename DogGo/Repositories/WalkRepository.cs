@@ -25,7 +25,7 @@ namespace DogGo.Repositories
                 return new SqlConnection(_config.GetConnectionString("DefaultConnection"));
             }
         }
-        public List<Walk> GetAllWalks()
+        public List<Walk> GetWalksByWalkerId(int Walkerid)
         {
             using (SqlConnection conn = Connection)
             {
@@ -33,8 +33,9 @@ namespace DogGo.Repositories
                 using (SqlCommand cmd = conn.CreateCommand())
                 {
                     cmd.CommandText = @"
-                        SELECT Id, Date, Duration, WalkerId, DogId FROM Walks;
+                        SELECT Id, Date, Duration, WalkerId, DogId FROM Walks WHERE WalkerId = @id;
                     ";
+                    cmd.Parameters.AddWithValue("@id", Walkerid);
 
                     SqlDataReader reader = cmd.ExecuteReader();
 

@@ -39,13 +39,13 @@
             <td>
                 @Html.DisplayFor(modelItem => item.NeighborhoodId)
             </td>
-            <td style="max-height:10px; max-width:10px;">
-                <img src="@item.ImageUrl" alt="avatar"  />
+            <td>
+                <img src="@item.ImageUrl" alt="avatar" class="profile" />
                 
             </td>
             <td>
                 @Html.ActionLink("Edit", "Edit", new {  id=item.Id  }) |
-                @Html.ActionLink("Details", "Details", new {  id=item.Id }) |
+                @Html.ActionLink("Details", "Details", new {  walkerId=item.Id }) |
                 @Html.ActionLink("Delete", "Delete", new {  id=item.Id })
             </td>
         </tr>
