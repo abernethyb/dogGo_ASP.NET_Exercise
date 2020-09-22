@@ -11,6 +11,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace DogGo.Controllers
 {
+    [Authorize]
     public class DogsController : Controller
     {
         // GET: DogsController
@@ -62,10 +63,13 @@ namespace DogGo.Controllers
         }
 
         // GET: DogsController/Edit/5
+        [Authorize]
         public ActionResult Edit(int id)
         {
             Dog dog = _dogRepo.GetDogById(id);
-            if (dog == null)
+            int ownerId = GetCurrentUserId();
+
+            if (dog == null || ownerId != dog.OwnerId)
             {
                 return NotFound();
             }
@@ -75,6 +79,7 @@ namespace DogGo.Controllers
         // POST: DogsController/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize]
         public ActionResult Edit(int id, Dog dog)
         {
             try
@@ -89,15 +94,22 @@ namespace DogGo.Controllers
         }
 
         // GET: DogsController/Delete/5
+        [Authorize]
         public ActionResult Delete(int id)
         {
             Dog dog = _dogRepo.GetDogById(id);
+            int ownerId = GetCurrentUserId();
+            if (ownerId != dog.OwnerId)
+            {
+                return NotFound();
+            }
             return View(dog);
         }
 
         // POST: DogsController/Delete/5
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize]
         public ActionResult Delete(int id, Dog dog)
         {
             try
